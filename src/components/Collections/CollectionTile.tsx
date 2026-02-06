@@ -52,7 +52,7 @@ export default function CollectionTile({
       />
 
       <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
-        <div className="flex items-center gap-3 mb-4">
+        <div className="flex items-center gap-3 mb-4 justify-end">
           <span
             className={`${config.bgColor} text-white text-xs font-bold px-3 py-1 rounded-full`}
           >

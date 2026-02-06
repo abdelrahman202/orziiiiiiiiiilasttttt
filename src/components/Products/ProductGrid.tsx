@@ -1,5 +1,6 @@
 import { products } from '../../data/products';
 import ProductCard from './ProductCard';
+import DecorativeIcon from '../DecorativeIcons';
 
 interface ProductGridProps {
   onProductSelect?: (productId: string) => void;
@@ -15,7 +16,10 @@ export default function ProductGrid({
   const availableProducts = products.filter((p) => p.status === 'available');
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-16 md:py-24 bg-white relative">
+      <DecorativeIcon icon="diamond" position={{ top: '8%', left: '6%' }} delay={1} />
+      <DecorativeIcon icon="star" position={{ top: '20%', right: '10%' }} delay={2.5} />
+
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-[#243247] mb-4">

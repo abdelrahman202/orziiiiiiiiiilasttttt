@@ -1,6 +1,12 @@
+import DecorativeIcon from '../DecorativeIcons';
+
 export default function StorySection() {
   return (
     <section className="py-16 md:py-24 bg-[#e7ddcc] relative overflow-hidden">
+      <DecorativeIcon icon="crown" position={{ top: '12%', left: '7%' }} delay={0} />
+      <DecorativeIcon icon="sparkles" position={{ top: '18%', right: '9%' }} delay={2} />
+      <DecorativeIcon icon="star" position={{ bottom: '20%', left: '10%' }} delay={4} />
+
       <div className="absolute inset-0 opacity-5">
         <div
           className="absolute inset-0"
@@ -14,7 +20,7 @@ export default function StorySection() {
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold text-[#243247] mb-8 leading-tight lh-sm">
+        <h2 className="text-4xl md:text-5xl font-bold text-[#243247] mb-8" style={{ lineHeight: '1.8' }}>
           وُلِدت من التِراث<br/>
           صُنِعت للهوية<br/>
           تُلبس بثقة

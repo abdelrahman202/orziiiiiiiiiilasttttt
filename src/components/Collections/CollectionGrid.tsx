@@ -1,5 +1,6 @@
 import { collections } from '../../data/collections';
 import CollectionTile from './CollectionTile';
+import DecorativeIcon from '../DecorativeIcons';
 
 interface CollectionGridProps {
   onCollectionSelect?: (collectionId: string) => void;
@@ -9,7 +10,10 @@ export default function CollectionGrid({
   onCollectionSelect,
 }: CollectionGridProps) {
   return (
-    <section className="py-16 md:py-24 bg-[#e7ddcc]">
+    <section className="py-16 md:py-24 bg-[#e7ddcc] relative">
+      <DecorativeIcon icon="watch" position={{ top: '10%', right: '5%' }} delay={0.5} />
+      <DecorativeIcon icon="scissors" position={{ bottom: '15%', left: '8%' }} delay={2} />
+
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-[#243247] mb-6">

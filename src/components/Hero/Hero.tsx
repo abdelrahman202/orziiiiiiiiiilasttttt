@@ -1,3 +1,5 @@
+import DecorativeIcon from '../DecorativeIcons';
+
 interface HeroProps {
   onShopClick?: () => void;
   onStoryClick?: () => void;
@@ -16,6 +18,10 @@ export default function Hero({ onShopClick, onStoryClick }: HeroProps) {
       />
 
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#e7ddcc]" />
+
+      <DecorativeIcon icon="crown" position={{ top: '15%', left: '10%' }} delay={0} />
+      <DecorativeIcon icon="diamond" position={{ top: '25%', right: '12%' }} delay={1.5} />
+      <DecorativeIcon icon="sparkles" position={{ bottom: '30%', left: '8%' }} delay={3} />
 
       <div className="relative z-10 text-center px-4 max-w-3xl mx-auto">
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-9 leading-tight">
