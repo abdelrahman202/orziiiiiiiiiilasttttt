@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { OrderFormData, governorates } from '../types/form';
+import styles from './OrderForm.module.css';
 
 interface OrderFormProps {
   onSubmit: (data: OrderFormData) => void;
@@ -85,9 +86,9 @@ export default function OrderForm({ onSubmit, isSubmitting }: OrderFormProps) {
     : [];
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div>
-        <label className="block text-[#243247] font-semibold mb-2">
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <div className={styles.fieldGroup}>
+        <label className={styles.label}>
           الاسم <span className="text-red-500">*</span>
         </label>
         <input
@@ -95,14 +96,14 @@ export default function OrderForm({ onSubmit, isSubmitting }: OrderFormProps) {
           name="name"
           value={formData.name}
           onChange={handleChange}
-          className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#243247] focus:border-transparent outline-none transition-all"
+          className={styles.input}
           placeholder="أدخل اسمك الكامل"
         />
-        {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+        {errors.name && <p className={styles.errorMessage}>{errors.name}</p>}
       </div>
 
-      <div>
-        <label className="block text-[#243247] font-semibold mb-2">
+      <div className={styles.fieldGroup}>
+        <label className={styles.label}>
           رقم الهاتف <span className="text-red-500">*</span>
         </label>
         <input
@@ -110,21 +111,21 @@ export default function OrderForm({ onSubmit, isSubmitting }: OrderFormProps) {
           name="phone"
           value={formData.phone}
           onChange={handleChange}
-          className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#243247] focus:border-transparent outline-none transition-all"
+          className={styles.input}
           placeholder="01xxxxxxxxx"
         />
-        {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+        {errors.phone && <p className={styles.errorMessage}>{errors.phone}</p>}
       </div>
 
-      <div>
-        <label className="block text-[#243247] font-semibold mb-2">
+      <div className={styles.fieldGroup}>
+        <label className={styles.label}>
           المحافظة <span className="text-red-500">*</span>
         </label>
         <select
           name="governorate"
           value={formData.governorate}
           onChange={handleChange}
-          className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#243247] focus:border-transparent outline-none transition-all"
+          className={styles.select}
         >
           <option value="">اختر المحافظة</option>
           {Object.keys(governorates).map((gov) => (
@@ -134,12 +135,12 @@ export default function OrderForm({ onSubmit, isSubmitting }: OrderFormProps) {
           ))}
         </select>
         {errors.governorate && (
-          <p className="text-red-500 text-sm mt-1">{errors.governorate}</p>
+          <p className={styles.errorMessage}>{errors.governorate}</p>
         )}
       </div>
 
-      <div>
-        <label className="block text-[#243247] font-semibold mb-2">
+      <div className={styles.fieldGroup}>
+        <label className={styles.label}>
           المنطقة <span className="text-red-500">*</span>
         </label>
         <select
@@ -147,7 +148,8 @@ export default function OrderForm({ onSubmit, isSubmitting }: OrderFormProps) {
           value={formData.area}
           onChange={handleChange}
           disabled={!formData.governorate}
-          className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#243247] focus:border-transparent outline-none transition-all disabled:bg-gray-100 disabled:cursor-not-allowed"
+          className={styles.select}
+          style={!formData.governorate ? { opacity: 0.5, cursor: 'not-allowed' } : {}}
         >
           <option value="">اختر المنطقة</option>
           {areas.map((area) => (
@@ -156,11 +158,11 @@ export default function OrderForm({ onSubmit, isSubmitting }: OrderFormProps) {
             </option>
           ))}
         </select>
-        {errors.area && <p className="text-red-500 text-sm mt-1">{errors.area}</p>}
+        {errors.area && <p className={styles.errorMessage}>{errors.area}</p>}
       </div>
 
-      <div>
-        <label className="block text-[#243247] font-semibold mb-2">
+      <div className={styles.fieldGroup}>
+        <label className={styles.label}>
           العنوان بالتفصيل <span className="text-red-500">*</span>
         </label>
         <textarea
@@ -168,26 +170,26 @@ export default function OrderForm({ onSubmit, isSubmitting }: OrderFormProps) {
           value={formData.address}
           onChange={handleChange}
           rows={3}
-          className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#243247] focus:border-transparent outline-none transition-all resize-none"
+          className={styles.textarea}
           placeholder="الشارع، رقم المبنى، الدور، معالم قريبة..."
         />
-        {errors.address && <p className="text-red-500 text-sm mt-1">{errors.address}</p>}
+        {errors.address && <p className={styles.errorMessage}>{errors.address}</p>}
       </div>
 
-      <div>
-        <label className="block text-[#243247] font-semibold mb-3">
+      <div className={styles.quantitySection}>
+        <label className={styles.quantityLabel}>
           الكمية المطلوبة من كل منتج <span className="text-red-500">*</span>
         </label>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="border-2 border-gray-300 hover:border-[#243247] rounded-lg p-4 transition-all">
+          <div className={styles.productCard}>
             <img
               src="/straight.jpg"
               alt="إسورة مستقيمة"
-              className="w-full h-48 object-cover rounded-lg mb-3"
+              className={styles.productImage}
             />
-            <p className="text-center font-semibold text-[#243247] mb-3 product-name">Aura</p>
+            <p className={styles.productName}>Aura</p>
             <div className="flex items-center justify-center gap-2">
-              <label htmlFor="straightQty" className="text-sm text-gray-700">
+              <label htmlFor="straightQty" style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.875rem' }}>
                 الكمية:
               </label>
               <input
@@ -197,20 +199,20 @@ export default function OrderForm({ onSubmit, isSubmitting }: OrderFormProps) {
                 min="0"
                 max="10"
                 defaultValue="0"
-                className="w-16 px-3 py-2 bg-white border border-gray-300 rounded text-center"
+                className={styles.quantityInput}
               />
             </div>
           </div>
 
-          <div className="border-2 border-gray-300 hover:border-[#243247] rounded-lg p-4 transition-all">
+          <div className={styles.productCard}>
             <img
               src="/curved.jpg"
               alt="إسورة منحنية"
-              className="w-full h-48 object-cover rounded-lg mb-3"
+              className={styles.productImage}
             />
-            <p className="text-center font-semibold text-[#243247] mb-3 product-name">Harmonia</p>
+            <p className={styles.productName}>Harmonia</p>
             <div className="flex items-center justify-center gap-2">
-              <label htmlFor="curvedQty" className="text-sm text-gray-700">
+              <label htmlFor="curvedQty" style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.875rem' }}>
                 الكمية:
               </label>
               <input
@@ -220,21 +222,21 @@ export default function OrderForm({ onSubmit, isSubmitting }: OrderFormProps) {
                 min="0"
                 max="10"
                 defaultValue="0"
-                className="w-16 px-3 py-2 bg-white border border-gray-300 rounded text-center"
+                className={styles.quantityInput}
               />
             </div>
           </div>
 
-          <div className="border-2 border-gray-300 hover:border-[#243247] rounded-lg p-4 transition-all">
+          <div className={styles.productCard}>
             <img
               src="/curvedgold.jpg"
               alt="إسورة منحنية ذهبي"
-              className="w-full h-48 object-cover rounded-lg mb-3"
+              className={styles.productImage}
             />
-            <p className="text-center font-semibold text-[#243247] mb-3 product-name">Sophia</p>
-            <p className="text-center text-xs text-gray-600 mb-3">حصري للنساء</p>
+            <p className={styles.productName}>Sophia</p>
+            <p className={styles.productLabel}>حصري للنساء</p>
             <div className="flex items-center justify-center gap-2">
-              <label htmlFor="curvedGoldQty" className="text-sm text-gray-700">
+              <label htmlFor="curvedGoldQty" style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.875rem' }}>
                 الكمية:
               </label>
               <input
@@ -244,20 +246,20 @@ export default function OrderForm({ onSubmit, isSubmitting }: OrderFormProps) {
                 min="0"
                 max="10"
                 defaultValue="0"
-                className="w-16 px-3 py-2 bg-white border border-gray-300 rounded text-center"
+                className={styles.quantityInput}
               />
             </div>
           </div>
         </div>
         {errors.address && errors.address.includes('منتج') && (
-          <p className="text-red-500 text-sm mt-2">{errors.address}</p>
+          <p className={styles.errorMessage}>{errors.address}</p>
         )}
       </div>
 
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-[#243247] text-white py-4 rounded-lg font-bold text-lg hover:bg-opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+        className={styles.submitButton}
       >
         {isSubmitting ? 'جاري الإرسال...' : 'إرسال الطلب'}
       </button>
