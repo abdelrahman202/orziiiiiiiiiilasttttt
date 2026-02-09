@@ -14,7 +14,7 @@ export const collections: Collection[] = [
   },
   {
     id: 'heritage-watch',
-    name: 'ORZI - Heritage Watch',
+    name: 'ORZI - Heritage Timepiece',
     nameAr: 'أورزي - ساعة التراث',
     slug: 'heritage-watch',
     description: 'A classic watch with heritage design that reflects ORZI\'s calm identity. Balanced details and timeless presence for men and women.',
