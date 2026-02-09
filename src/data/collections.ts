@@ -25,7 +25,7 @@ export const collections: Collection[] = [
   },
   {
     id: 'heritage-shoes',
-    name: 'ORZI - Heritage Shoes',
+    name: 'ORZI - Heritage Loafers',
     nameAr: 'أورزي - أحذية التراث',
     slug: 'heritage-shoes',
     description: 'A shoe with classic Italian design that embodies quiet elegance. Made to complete the ORZI presence for men and women.',
